@@ -129,7 +129,7 @@ public class SingleLinkedList {
     }
 
     public void deleteNodeByPosition(int position) {
-        int len = size;//calcLen(head);
+        int len = calcLen(head);
 // Can only insert after 1st position
 // Can't insert if position to insert is greater than size of Linked List
         if (position < 1 || position > len) {
@@ -152,6 +152,9 @@ public class SingleLinkedList {
             }
 // assigned next node of the previous node to nth node's next
             previous.next = temp.next;
+            if (tail == temp) {
+                tail = previous;
+            }
             System.out.println("Deleted: " + temp.value);
             size--;
         }
@@ -283,17 +286,13 @@ public class SingleLinkedList {
         SingleLinkedList sll = new SingleLinkedList();
         sll.addFirst(1);
         sll.show();
-        sll.insertAfter(1, 2);
+        sll.addLast(2);
         sll.show();
-        sll.insertAfter(1, 3);
+        sll.addLast(3);
         sll.show();
-        sll.insertAfter(3, 4);
+        sll.deleteNodeByPosition(3);
         sll.show();
-        sll.insertBefore(1, 0);
-        sll.show();
-        sll.deleteNodeByPosition(1);
-        sll.show();
-        sll.deleteNodeByValue(1);
+        sll.deleteNodeByPosition(2);
         sll.show();
     }
 }
